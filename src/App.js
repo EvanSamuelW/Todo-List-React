@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import Todos from "./Todos.jsx";
 import "bulma/css/bulma.min.css";
+import { Helmet } from "react-helmet";
 
 function App() {
   const [todos, setTodos] = useState([]);
@@ -30,9 +31,6 @@ function App() {
     }
   };
 
-  useEffect(() => {
-    document.title = "Todo List";
-  }, []);
   useEffect(() => {
     if (editTodo) {
       setTodoItem(editTodo.task);
@@ -78,6 +76,10 @@ function App() {
 
   return (
     <body>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>To Do List</title>
+      </Helmet>
       <div className="level">
         <div className="level-item">
           <figure>
