@@ -64,11 +64,20 @@ figure {
     margin-left: 40%;
 }
 
-@media (max-width:600px) {
+@media (max-width:480px) {
     .item {
-        margin-left: 15%;
+        margin-left: 12%;
     }
     .inner {
-        margin-left: 15%;
+        margin-left: 12%;
+    }
+}
+
+@media only screen and (min-width: 481px) and (max-width:768px) {
+    .item {
+        margin-left: 20%;
+    }
+    .inner {
+        margin-left: 20%;
     }
 }
