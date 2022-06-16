@@ -29,6 +29,10 @@ function App() {
       }
     }
   };
+
+  useEffect(() => {
+    document.title = "Todo List";
+  }, []);
   useEffect(() => {
     if (editTodo) {
       setTodoItem(editTodo.task);
