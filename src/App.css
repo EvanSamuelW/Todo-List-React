@@ -75,9 +75,9 @@ figure {
 
 @media only screen and (min-width: 481px) and (max-width:768px) {
     .item {
-        margin-left: 20%;
+        margin-left: 15%;
     }
     .inner {
-        margin-left: 20%;
+        margin-left: 15%;
     }
 }
