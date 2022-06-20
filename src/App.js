@@ -89,6 +89,7 @@ function App() {
                   <div class="control">
                     <input
                       class="input"
+                      placeholder="Create todo"
                       value={todoItem}
                       onChange={handleChange}
                     />
