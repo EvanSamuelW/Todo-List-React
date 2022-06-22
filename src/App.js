@@ -8,6 +8,7 @@ function App() {
   const [todos, setTodos] = useState([]);
   const [todoItem, setTodoItem] = useState("");
   const [editTodo, setEditTodo] = useState("");
+  const [buttonText, setButtonText] = useState("Add");
 
   const handleSubmit = (event) => {
     if (todoItem !== "") {
@@ -15,6 +16,7 @@ function App() {
         event.preventDefault();
         let copy = [...todos];
         copy = [...copy, { id: Date.now(), task: todoItem, done: false }];
+
         setTodos(copy);
         setTodoItem("");
       } else {
@@ -25,6 +27,7 @@ function App() {
             ? { id: editTodo.id, task: todoItem, done: editTodo.done }
             : item;
         });
+        setButtonText("Add");
         setTodos(newData);
         setEditTodo("");
       }
@@ -34,6 +37,7 @@ function App() {
   useEffect(() => {
     if (editTodo) {
       setTodoItem(editTodo.task);
+      setButtonText("Edit");
     } else {
       setTodoItem("");
     }
@@ -53,9 +57,23 @@ function App() {
 
   const handleDone = (id) => {
     let copy = [...todos];
+    let done = true;
     Object.keys(copy).forEach((task) => {
-      copy[task]["done"] = true;
+      if (copy[task]["done"] === false) {
+        done = false;
+      }
     });
+
+    if (done) {
+      Object.keys(copy).forEach((task) => {
+        copy[task]["done"] = false;
+      });
+    } else {
+      Object.keys(copy).forEach((task) => {
+        copy[task]["done"] = true;
+      });
+    }
+
     setTodos(copy);
   };
   const handleUpdate = (id) => {
@@ -96,7 +114,7 @@ function App() {
                   </div>
                   <div class="control">
                     <a class="button is-success" onClick={handleSubmit}>
-                      Add
+                      {buttonText}
                     </a>
                   </div>
                 </div>
